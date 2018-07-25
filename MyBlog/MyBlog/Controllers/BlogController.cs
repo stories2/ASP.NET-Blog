@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyBlog.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,9 +9,19 @@ namespace MyBlog.Controllers
 {
     public class BlogController : Controller
     {
+        MyBlogEntities myBlogEntities;
+        MyBlogDBManager myBlogDBManager;
+
+        public BlogController()
+        {
+            myBlogEntities = new MyBlogEntities();
+            myBlogDBManager = new MyBlogDBManager(myBlogEntities);
+        }
+
         // GET: Blog
         public ActionResult Index()
         {
+            ViewBag.latestArticleList = myBlogDBManager.GetLatestArticeList();
             return View();
         }
     }
