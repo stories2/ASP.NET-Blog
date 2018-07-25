@@ -26,6 +26,21 @@ namespace MyBlog
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            bundles.Add(new ScriptBundle("~/Blog/js").Include(
+                "~/Template/assets/js/jquery.min.js",
+                "~/Template/assets/js/jquery.scrollex.min.js",
+                "~/Template/assets/js/jquery.scrolly.min.js",
+                "~/Template/assets/js/browser.min.js",
+                "~/Template/assets/js/breakpoints.min.js",
+                "~/Template/assets/js/util.js",
+                "~/Template/assets/js/main.js"
+                ));
+
+            bundles.Add(new StyleBundle("~/Blog/css").Include(
+                "~/Template/assets/css/main.css",
+                "~/Template/assets/css/noscript.css"
+                ));
         }
     }
 }

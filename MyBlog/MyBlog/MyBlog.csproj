@@ -273,10 +273,11 @@
     <Content Include="Template\assets\sass\libs\_vendor.scss" />
     <Content Include="Template\assets\sass\main.scss" />
     <Content Include="Template\assets\sass\noscript.scss" />
+    <Content Include="Views\Shared\_MyBlogBigLayout.cshtml" />
+    <Content Include="Views\Blog\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Blog\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
