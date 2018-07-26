@@ -40,5 +40,13 @@ namespace MyBlog.Controllers
             }
             return article;
         }
+
+        public void InsertNewArticle(Article article)
+        {
+            article.uploadDateTime = DateTime.Now;
+            article.writer = DefineManager.DEFAULT_WRITER;
+            myBlogEntities.Article.Add(article);
+            myBlogEntities.SaveChanges();
+        }
     }
 }

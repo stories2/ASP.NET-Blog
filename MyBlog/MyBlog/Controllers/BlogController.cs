@@ -52,6 +52,7 @@ namespace MyBlog.Controllers
                 {
                     LogManager.PrintLogMessage("BlogController", "UploadNewArticle", "article title: " + newArticle.title + " highlight: " +
                         newArticle.highlightText + " image url: " + newArticle.imgUrl + " content len: " + newArticle.articleContent.Length, DefineManager.LOG_LEVEL_DEBUG);
+                    myBlogDBManager.InsertNewArticle(newArticle);
                 }
                 catch(Exception except)
                 {
