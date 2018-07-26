@@ -141,6 +141,7 @@
     <Compile Include="Models\Article.cs">
       <DependentUpon>MyBlogModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ErrorModel.cs" />
     <Compile Include="Models\MyBlogModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

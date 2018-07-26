@@ -86,6 +86,12 @@ namespace MyBlog.Controllers
         [HttpGet]
         public ActionResult Error()
         {
+            ErrorModel errorModel = new ErrorModel();
+            errorModel.errorTitle = "This is error title";
+            errorModel.errorCode = "This is error detail code";
+
+            ViewBag.errorModel = errorModel;
+
             return View();
         }
     }

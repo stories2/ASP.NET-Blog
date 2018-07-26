@@ -1,4 +1,6 @@
-﻿
+﻿@using MyBlog.Models;
+@using System.Data.Entity;
+@model ErrorModel
 @{
     ViewBag.Title = "Error";
     Layout = "~/Views/Shared/_MyBlogBigLayout.cshtml";
@@ -11,11 +13,11 @@
 
     <!-- Text stuff -->
     <h2>Shit</h2>
-    <p>Something goes wrong</p>
+    <p>@ViewBag.errorModel.errorTitle</p>
 
     <!-- Preformatted Code -->
     <h2>Debugging view</h2>
-    <pre><code>
+    <pre><code>@ViewBag.errorModel.errorCode
 </code></pre>
 
 </section>
