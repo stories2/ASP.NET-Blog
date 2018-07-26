@@ -26,5 +26,12 @@ namespace MyBlog.Controllers
             int articleListCount = myBlogEntities.Article.Count();
             return articleListCount;
         }
+
+        public Article GetDetailOfArticle(int articleID)
+        {
+            Article article;
+            article = myBlogEntities.Article.Where(articleModel => articleModel.articleID == articleID).First<Article>();
+            return article;
+        }
     }
 }

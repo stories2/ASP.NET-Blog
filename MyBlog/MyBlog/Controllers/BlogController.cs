@@ -69,6 +69,15 @@ namespace MyBlog.Controllers
         [HttpGet]
         public ActionResult ShowSelectedArticle(int articleID = DefineManager.DEFAULT_SHOW_ARTICLE)
         {
+            ViewBag.article = myBlogDBManager.GetDetailOfArticle(articleID);
+            if(ViewBag.article == null)
+            {
+                LogManager.PrintLogMessage("BlogController", "UploadNewArticle", "selected article is null", DefineManager.LOG_LEVEL_WARN);
+            }
+            else
+            {
+                LogManager.PrintLogMessage("BlogController", "UploadNewArticle", "selected article id: " + ViewBag.article.articleID, DefineManager.LOG_LEVEL_DEBUG);
+            }
             return View();
         }
 
