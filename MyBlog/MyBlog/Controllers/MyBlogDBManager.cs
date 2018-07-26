@@ -43,10 +43,17 @@ namespace MyBlog.Controllers
 
         public void InsertNewArticle(Article article)
         {
-            article.uploadDateTime = DateTime.Now;
-            article.writer = DefineManager.DEFAULT_WRITER;
-            myBlogEntities.Article.Add(article);
-            myBlogEntities.SaveChanges();
+            try
+            {
+                article.uploadDateTime = DateTime.Now;
+                article.writer = DefineManager.DEFAULT_WRITER;
+                myBlogEntities.Article.Add(article);
+                myBlogEntities.SaveChanges();
+            }
+            catch(Exception except)
+            {
+                LogManager.PrintLogMessage("MyBlogDBManager", "InsertNewArticle", "cannot insert new article: " + article.articleID + " except: " + except, DefineManager.LOG_LEVEL_ERROR);
+            }
         }
     }
 }
