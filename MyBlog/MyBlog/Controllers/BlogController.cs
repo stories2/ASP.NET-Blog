@@ -27,14 +27,17 @@ namespace MyBlog.Controllers
             ViewBag.currentShowPage = page;
             ViewBag.pageNavigationSize = DefineManager.PAGE_NAVIGATION_SHOW_SIZE;
 
-            //ViewBag.currentShowPage = 1;
-            //ViewBag.articleListCount = 40;
+            LogManager.PrintLogMessage("BlogController", "Index", "current page: " + page + " article count: " + 
+                ViewBag.articleListCount + " one page per print article limit: " + ViewBag.limitOfPrintArticleInOnePage + 
+                " page navigation size: " + ViewBag.pageNavigationSize, DefineManager.LOG_LEVEL_INFO);
+
             return View();
         }
 
         [HttpGet]
         public ActionResult UploadNewArticle()
         {
+            LogManager.PrintLogMessage("BlogController", "UploadNewArticle", "user entered making new article", DefineManager.LOG_LEVEL_INFO);
             return View();
         }
 
@@ -42,9 +45,13 @@ namespace MyBlog.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult UploadNewArticle(Article newArticle)
         {
-            System.Diagnostics.Debug.WriteLine("Hello world");
             if (ModelState.IsValid)
             {
+                LogManager.PrintLogMessage("BlogController", "UploadNewArticle", "current token is valied", DefineManager.LOG_LEVEL_INFO);
+            }
+            else
+            {
+                LogManager.PrintLogMessage("BlogController", "UploadNewArticle", "current token is not valied", DefineManager.LOG_LEVEL_WARN);
             }
             return View();
         }
