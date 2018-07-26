@@ -71,5 +71,11 @@ namespace MyBlog.Controllers
         {
             return View();
         }
+
+        [HttpGet]
+        public ActionResult Error()
+        {
+            return View();
+        }
     }
 }

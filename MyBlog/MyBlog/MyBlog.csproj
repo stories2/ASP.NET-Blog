@@ -210,6 +210,7 @@
     <Content Include="Template\assets\js\jquery.scrolly.min.js" />
     <Content Include="Template\assets\js\main.js" />
     <Content Include="Template\assets\js\util.js" />
+    <Content Include="Template\Error.html" />
     <Content Include="Template\UploadNewArticle.html" />
     <Content Include="Template\elements.html" />
     <Content Include="Template\generic.html" />
@@ -280,6 +281,7 @@
     <Content Include="Views\Shared\_MyBlogBigLayout.cshtml" />
     <Content Include="Views\Blog\Index.cshtml" />
     <Content Include="Views\Blog\WriteNewArticle.cshtml" />
+    <Content Include="Views\Blog\Error.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
