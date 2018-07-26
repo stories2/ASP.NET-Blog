@@ -20,5 +20,11 @@ namespace MyBlog.Controllers
             List<Article> latestArticleList = myBlogEntities.Article.OrderByDescending(article => article.articleID).Take(limit).ToList();
             return latestArticleList;
         }
+
+        public int GetCountOfArticleList()
+        {
+            int articleListCount = myBlogEntities.Article.Count();
+            return articleListCount;
+        }
     }
 }

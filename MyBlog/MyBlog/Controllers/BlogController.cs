@@ -22,6 +22,7 @@ namespace MyBlog.Controllers
         public ActionResult Index()
         {
             ViewBag.latestArticleList = myBlogDBManager.GetLatestArticeList();
+            ViewBag.articleListCount = myBlogDBManager.GetCountOfArticleList();
             return View();
         }
     }
