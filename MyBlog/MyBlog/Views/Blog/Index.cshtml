@@ -24,7 +24,7 @@
             <header class="major">
                 <span class="date">@featuredPost.uploadDateTime</span>
                 <h2>
-                    <a href="#">
+                    <a href="/Blog/ShowSelectedArticle?articleID=@featuredPost.articleID">
                         #@featuredPost.articleID @featuredPost.title
                     </a>
                 </h2>
@@ -32,9 +32,9 @@
                     @featuredPost.highlightText
                 </p>
             </header>
-            <a href="#" class="image main"><img src="@featuredPost.imgUrl" alt="" /></a>
+            <a href="/Blog/ShowSelectedArticle?articleID=@featuredPost.articleID" class="image main"><img src="@featuredPost.imgUrl" alt="" /></a>
             <ul class="actions special">
-                <li><a href="#" class="button large">Full Story</a></li>
+                <li><a href="/Blog/ShowSelectedArticle?articleID=@featuredPost.articleID" class="button large">Full Story</a></li>
             </ul>
     </article>
 
@@ -50,15 +50,15 @@
                     <header>
                         <span class="date">@currentPost.uploadDateTime</span>
                         <h2>
-                            <a href="#">
+                            <a href="/Blog/ShowSelectedArticle?articleID=@currentPost.articleID">
                                 #@currentPost.articleID @currentPost.title
                             </a>
                         </h2>
                     </header>
-                    <a href="#" class="image fit"><img src="@currentPost.imgUrl" alt="" /></a>
+                    <a href="/Blog/ShowSelectedArticle?articleID=@currentPost.articleID" class="image fit"><img src="@currentPost.imgUrl" alt="" /></a>
                     <p>@currentPost.highlightText</p>
                     <ul class="actions special">
-                        <li><a href="#" class="button">Full Story</a></li>
+                        <li><a href="/Blog/ShowSelectedArticle?articleID=@currentPost.articleID" class="button">Full Story</a></li>
                     </ul>
                 </article>
             }
