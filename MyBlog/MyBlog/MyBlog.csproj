@@ -211,6 +211,9 @@
     <Content Include="Template\assets\js\jquery.scrolly.min.js" />
     <Content Include="Template\assets\js\main.js" />
     <Content Include="Template\assets\js\util.js" />
+    <Content Include="Template\custom\js\core\TabMenuManager.js" />
+    <Content Include="Template\custom\js\settings\DefineManager.js" />
+    <Content Include="Template\custom\js\utils\LogManager.js" />
     <Content Include="Template\ShowSelectedArticle.html" />
     <Content Include="Template\Error.html" />
     <Content Include="Template\UploadNewArticle.html" />

@@ -34,7 +34,10 @@ namespace MyBlog
                 "~/Template/assets/js/browser.min.js",
                 "~/Template/assets/js/breakpoints.min.js",
                 "~/Template/assets/js/util.js",
-                "~/Template/assets/js/main.js"
+                "~/Template/assets/js/main.js",
+                "~/Template/custom/js/settings/DefineManager.js",
+                "~/Template/custom/js/utils/LogManager.js",
+                "~/Template/custom/js/core/TabMenuManager.js"
                 ));
 
             bundles.Add(new StyleBundle("~/Blog/css").Include(
