@@ -42,9 +42,9 @@ namespace MyBlog.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult UploadNewArticle(Article newArticle)
         {
-            if(ModelState.IsValid)
+            System.Diagnostics.Debug.WriteLine("Hello world");
+            if (ModelState.IsValid)
             {
-
             }
             return View();
         }

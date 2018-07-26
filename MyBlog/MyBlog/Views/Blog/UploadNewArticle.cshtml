@@ -3,7 +3,6 @@
     ViewBag.Title = "UploadNewArticle";
     Layout = "~/Views/Shared/_MyBlogBigLayout.cshtml";
 }
-@Html.AntiForgeryToken()
 <!-- Post -->
 <section class="post">
 
@@ -11,6 +10,7 @@
     <h2>Upload new post</h2>
 
     <form method="post" action="#">
+        @Html.AntiForgeryToken()
         <div class="row gtr-uniform">
             <div class="col-12">
                 <input type="text" placeholder="Title" id="title" />
