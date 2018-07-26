@@ -15,7 +15,7 @@ namespace MyBlog.Controllers
             this.myBlogEntities = myBlogEntities;
         }
 
-        public List<Article> GetLatestArticeList(int limit = 5)
+        public List<Article> GetLatestArticeList(int limit = DefineManager.LIMIT_OF_SHOW_ARTICLES)
         {
             List<Article> latestArticleList = myBlogEntities.Article.OrderByDescending(article => article.articleID).Take(limit).ToList();
             return latestArticleList;
