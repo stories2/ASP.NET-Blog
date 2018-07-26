@@ -17,7 +17,7 @@ namespace MyBlog.Controllers
 
         public List<Article> GetLatestArticeList(int limit = 5)
         {
-            List<Article> latestArticleList = myBlogEntities.Article.OrderByDescending(article => article.uploadDateTime).Take(limit).ToList();
+            List<Article> latestArticleList = myBlogEntities.Article.OrderByDescending(article => article.articleID).Take(limit).ToList();
             return latestArticleList;
         }
     }
