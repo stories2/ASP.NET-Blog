@@ -1,0 +1,54 @@
+﻿@using MyBlog.Models;
+@using System.Data.Entity;
+
+@model Article
+@{
+    ViewBag.Title = "UploadNewArticle";
+    Layout = "~/Views/Shared/_MyBlogBigLayout.cshtml";
+
+    if (IsPost)
+    {
+        string title = Request.Form["title"];
+        string highlightText = Request.Form["highlightText"];
+        string imgUrl = Request.Form["imgUrl"];
+        string articleContent = Request.Form["articleContent"];
+    }
+}
+<!-- Post -->
+<section class="post">
+
+    <!-- Form -->
+    <h2>Upload new post</h2>
+
+    <form method="post" action="@Url.Action("UploadNewArticle", "Blog")">
+        @Html.AntiForgeryToken()
+        <div class="row gtr-uniform">
+            <div class="col-12">
+                @*<input type="text" placeholder="Title" id="title"/>*@
+                @Html.TextBoxFor(articleModel => articleModel.title, new { placeholder = "Title"})
+            </div>
+
+            <div class="col-12">
+                @*<textarea placeholder="Highlight" rows="3" id="highlightText"></textarea>*@
+                @Html.TextAreaFor(articleModel => articleModel.highlightText, new { placeholder = "Highlight", rows = "3"})
+            </div>
+
+            <div class="col-12">
+                @*<input type="text" placeholder="Image URL" id="imgUrl"/>*@
+                @Html.TextBoxFor(articleModel => articleModel.imgUrl, new { placeholder = "Image URL"})
+            </div>
+
+            <div class="col-12">
+                @*<textarea placeholder="Content" rows="6" id="articleContent"></textarea>*@
+                @Html.TextAreaFor(articleModel => articleModel.articleContent, new { placeholder = "Content", rows = "6" })
+            </div>
+
+            <div class="col-12">
+                <ul class="actions">
+                    <li><input type="submit" value="Send Message" class="primary" /></li>
+                    <li><input type="reset" value="Reset" /></li>
+                </ul>
+            </div>
+        </div>
+    </form>
+</section>

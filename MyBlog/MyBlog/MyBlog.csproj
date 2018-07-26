@@ -279,7 +279,7 @@
     <Content Include="Template\assets\sass\noscript.scss" />
     <Content Include="Views\Shared\_MyBlogBigLayout.cshtml" />
     <Content Include="Views\Blog\Index.cshtml" />
-    <Content Include="Views\Blog\UploadNewArticle.cshtml" />
+    <Content Include="Views\Blog\WriteNewArticle.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

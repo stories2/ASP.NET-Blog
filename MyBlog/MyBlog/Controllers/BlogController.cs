@@ -35,25 +35,35 @@ namespace MyBlog.Controllers
         }
 
         [HttpGet]
-        public ActionResult UploadNewArticle()
+        public ActionResult WriteNewArticle()
         {
-            LogManager.PrintLogMessage("BlogController", "UploadNewArticle", "user entered making new article", DefineManager.LOG_LEVEL_INFO);
+            LogManager.PrintLogMessage("BlogController", "WriteNewArticle", "user entered making new article", DefineManager.LOG_LEVEL_INFO);
             return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult UploadNewArticle(Article newArticle)
+        public void UploadNewArticle(Article newArticle)
         {
             if (ModelState.IsValid)
             {
                 LogManager.PrintLogMessage("BlogController", "UploadNewArticle", "current token is valied", DefineManager.LOG_LEVEL_INFO);
+                try
+                {
+                    LogManager.PrintLogMessage("BlogController", "UploadNewArticle", "article title: " + newArticle.title + " highlight: " +
+                        newArticle.highlightText + " image url: " + newArticle.imgUrl + " content len: " + newArticle.articleContent.Length, DefineManager.LOG_LEVEL_DEBUG);
+                }
+                catch(Exception except)
+                {
+                    LogManager.PrintLogMessage("BlogController", "UploadNewArticle", "exception accepted while upload new article: " + except, DefineManager.LOG_LEVEL_ERROR);
+                }
             }
             else
             {
                 LogManager.PrintLogMessage("BlogController", "UploadNewArticle", "current token is not valied", DefineManager.LOG_LEVEL_WARN);
             }
-            return View();
+            //return View();
+            Response.Redirect("/Blog/Index");
         }
 
         [HttpGet]
