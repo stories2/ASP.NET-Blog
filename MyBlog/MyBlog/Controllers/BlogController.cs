@@ -19,10 +19,16 @@ namespace MyBlog.Controllers
         }
 
         // GET: Blog
-        public ActionResult Index()
+        public ActionResult Index(int page = DefineManager.DEFAULT_SHOW_PAGE_NUMBER)
         {
             ViewBag.latestArticleList = myBlogDBManager.GetLatestArticeList();
             ViewBag.articleListCount = myBlogDBManager.GetCountOfArticleList();
+            ViewBag.limitOfPrintArticleInOnePage = DefineManager.LIMIT_OF_SHOW_ARTICLES;
+            ViewBag.currentShowPage = page;
+            ViewBag.pageNavigationSize = DefineManager.PAGE_NAVIGATION_SHOW_SIZE;
+
+            //ViewBag.currentShowPage = 1;
+            ViewBag.articleListCount = 40;
             return View();
         }
     }
