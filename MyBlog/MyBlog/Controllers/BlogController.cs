@@ -42,6 +42,10 @@ namespace MyBlog.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult UploadNewArticle(Article newArticle)
         {
+            if(ModelState.IsValid)
+            {
+
+            }
             return View();
         }
 
