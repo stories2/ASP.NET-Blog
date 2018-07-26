@@ -31,5 +31,24 @@ namespace MyBlog.Controllers
             //ViewBag.articleListCount = 40;
             return View();
         }
+
+        [HttpGet]
+        public ActionResult UploadNewArticle()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult UploadNewArticle(Article newArticle)
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult ShowSelectedArticle(int articleID = DefineManager.DEFAULT_SHOW_ARTICLE)
+        {
+            return View();
+        }
     }
 }
