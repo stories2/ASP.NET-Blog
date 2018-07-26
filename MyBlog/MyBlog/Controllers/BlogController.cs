@@ -28,7 +28,7 @@ namespace MyBlog.Controllers
             ViewBag.pageNavigationSize = DefineManager.PAGE_NAVIGATION_SHOW_SIZE;
 
             //ViewBag.currentShowPage = 1;
-            ViewBag.articleListCount = 40;
+            //ViewBag.articleListCount = 40;
             return View();
         }
     }

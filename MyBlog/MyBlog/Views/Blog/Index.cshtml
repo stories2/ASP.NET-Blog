@@ -72,9 +72,16 @@
                 {
                     <a href="/Blog/Index?page=@(ViewBag.currentShowPage - 1)" class="previous">Prev</a>
                 }
-                @for(i = pageStartPoint; i < (pageNum < pageStartPoint + ViewBag.pageNavigationSize ? pageNum : pageStartPoint + ViewBag.pageNavigationSize); i ++) 
+                @for (i = pageStartPoint; i < (pageNum < pageStartPoint + ViewBag.pageNavigationSize ? pageNum : pageStartPoint + ViewBag.pageNavigationSize); i++)
                 {
-                    <a href="/Blog/Index?page=@i" class="page">@i</a>
+                    if (ViewBag.currentShowPage == i)
+                    {
+                        <a href="/Blog/Index?page=@i" class="page active">@i</a>
+                    }
+                    else
+                    {
+                        <a href="/Blog/Index?page=@i" class="page">@i</a>
+                    }
                 }
                 @*<a href="#" class="page active">1</a>
                 <a href="#" class="page">2</a>
