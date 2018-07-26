@@ -18,3 +18,12 @@
     <div class="image main"><img src="@ViewBag.article.imgUrl" alt="" /></div>
     <p>@ViewBag.article.articleContent</p>
 </section>
+
+<script>
+    function DocumentReadyFunc()
+    {
+        PrintLogMessage("ShowSelectedArticle", "DocumentReadyFunc", "init", LOG_LEVEL_INFO)
+        tabMenuManager.ActiveSecondMenu()
+        tabMenuManager.ChangeSecondMenu("SHOW SELECTED ARTICLE", "/Blog/ShowSelectedArticle?articleID=" + @ViewBag.article.articleID)
+    }
+</script>

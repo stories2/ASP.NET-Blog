@@ -131,7 +131,11 @@
     <script src="/Template/custom/js/utils/LogManager.js"></script>
     <script src="/Template/custom/js/core/TabMenuManager.js"></script>
     <script>
-        tabMenuManager = new TabMenuManager()
+        $(document).ready(function ()
+        {
+            tabMenuManager = new TabMenuManager()
+            DocumentReadyFunc()
+        })
     </script>
 </body>
 </html>

@@ -21,3 +21,12 @@
 </code></pre>
 
 </section>
+
+<script>
+    function DocumentReadyFunc()
+    {
+        PrintLogMessage("Error", "DocumentReadyFunc", "init", LOG_LEVEL_INFO)
+        tabMenuManager.ActiveSecondMenu()
+        tabMenuManager.ChangeSecondMenu("ERROR", "#")
+    }
+</script>

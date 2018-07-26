@@ -99,3 +99,12 @@
     }
 
 }    
+
+<script>
+    function DocumentReadyFunc()
+    {
+        PrintLogMessage("index", "DocumentRedyFunc", "init", LOG_LEVEL_INFO)
+        tabMenuManager.DisactiveSecondMenu()
+        tabMenuManager.ChangeSecondMenu("WRITE NEW ARTICLE", "/Blog/WriteNewArticle")
+    }
+</script>
