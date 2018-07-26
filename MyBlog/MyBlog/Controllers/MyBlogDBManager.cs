@@ -29,8 +29,15 @@ namespace MyBlog.Controllers
 
         public Article GetDetailOfArticle(int articleID)
         {
-            Article article;
-            article = myBlogEntities.Article.Where(articleModel => articleModel.articleID == articleID).First<Article>();
+            Article article = null;
+            try
+            {
+                article = myBlogEntities.Article.Where(articleModel => articleModel.articleID == articleID).First<Article>();
+            }
+            catch(Exception except)
+            {
+                LogManager.PrintLogMessage("MyBlogDBManager", "GetDetailOfArticle", "article id: " + articleID + "cannot execute query: " + except, DefineManager.LOG_LEVEL_ERROR);
+            }
             return article;
         }
     }

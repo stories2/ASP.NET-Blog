@@ -73,6 +73,8 @@ namespace MyBlog.Controllers
             if(ViewBag.article == null)
             {
                 LogManager.PrintLogMessage("BlogController", "UploadNewArticle", "selected article is null", DefineManager.LOG_LEVEL_WARN);
+                Response.Redirect("/Blog/Error");
+                return null;
             }
             else
             {
