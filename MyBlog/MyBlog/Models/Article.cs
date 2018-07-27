@@ -22,5 +22,6 @@ namespace MyBlog.Models
         public System.DateTime uploadDateTime { get; set; }
         public Nullable<System.DateTime> lastUpdateDateTime { get; set; }
         public string writer { get; set; }
+        public byte isDelete { get; set; }
     }
 }

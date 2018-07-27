@@ -25,7 +25,7 @@ namespace MyBlog.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Article> Article { get; set; }
         public virtual DbSet<UserInfo> UserInfo { get; set; }
+        public virtual DbSet<Article> Article { get; set; }
     }
 }

@@ -34,5 +34,8 @@ namespace MyBlog.Controllers
 
             DEFAULT_WRITER = "stories2"
             ;
+
+        public const byte
+            NOT_DELETED_ARTICLE = 0;
     }
 }
