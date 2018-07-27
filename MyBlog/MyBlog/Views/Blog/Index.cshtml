@@ -3,19 +3,27 @@
     Layout = "~/Views/Shared/_MyBlogBigLayout.cshtml";
 
     var articleCount = ViewBag.latestArticleList.Count;
-    int pageNum = (ViewBag.articleListCount / ViewBag.limitOfPrintArticleInOnePage);
+    int pageNum = ((ViewBag.articleListCount - 1) + ViewBag.limitOfPrintArticleInOnePage) / ViewBag.limitOfPrintArticleInOnePage;
+
     int pageStartPoint = ViewBag.currentShowPage - (int)ViewBag.pageNavigationSize / 2;
     if(pageStartPoint <= 0)
     {
         pageStartPoint = 1;
     }
+    int i = 1;
 
     //if(ViewBag.currentShowPage + (int)ViewBag.pageNavigationSize / 2 >= pageNum)
     //{
     //    pageStartPoint = pageStartPoint - ViewBag.limitOfPrintArticleInOnePage;
     //}
 }
-
+@*<label>
+    This is debug code
+</label>
+<pre><code>article count: @articleCount 
+page num: @pageNum
+pageStartPoint: @pageStartPoint
+current show page: @ViewBag.currentShowPage</code></pre>*@
 @if (articleCount > 0)
 {
     var featuredPost = ViewBag.latestArticleList[0];
@@ -40,7 +48,6 @@
 
     if (articleCount > 1)
     {
-        int i = 1;
         <!-- Posts -->
         <section class="posts">
             @for(i = 1; i < articleCount; i ++) 
@@ -63,40 +70,39 @@
                 </article>
             }
         </section>
-
-        <!-- Footer -->
-        <footer>
-            @*@pageNum ~ @(pageStartPoint + ViewBag.pageNavigationSize)*@
-            <div class="pagination">
-                @if(ViewBag.currentShowPage > 1) 
+    }
+    <!-- Footer -->
+    <footer>
+        @*@pageNum ~ @(pageStartPoint + ViewBag.pageNavigationSize)*@
+        <div class="pagination">
+            @if (ViewBag.currentShowPage > 1)
+            {
+                <a href="/Blog/Index?page=@(ViewBag.currentShowPage - 1)" class="previous">Prev</a>
+            }
+            @for (i = pageStartPoint; i <= (pageNum < pageStartPoint + ViewBag.pageNavigationSize ? pageNum : pageStartPoint + ViewBag.pageNavigationSize); i++)
+            {
+                if (ViewBag.currentShowPage == i)
                 {
-                    <a href="/Blog/Index?page=@(ViewBag.currentShowPage - 1)" class="previous">Prev</a>
+                    <a href="/Blog/Index?page=@i" class="page active">@i</a>
                 }
-                @for (i = pageStartPoint; i < (pageNum < pageStartPoint + ViewBag.pageNavigationSize ? pageNum : pageStartPoint + ViewBag.pageNavigationSize); i++)
+                else
                 {
-                    if (ViewBag.currentShowPage == i)
-                    {
-                        <a href="/Blog/Index?page=@i" class="page active">@i</a>
-                    }
-                    else
-                    {
-                        <a href="/Blog/Index?page=@i" class="page">@i</a>
-                    }
+                    <a href="/Blog/Index?page=@i" class="page">@i</a>
                 }
-                @*<a href="#" class="page active">1</a>
+            }
+            @*<a href="#" class="page active">1</a>
                 <a href="#" class="page">2</a>
                 <a href="#" class="page">3</a>
                 <span class="extra">&hellip;</span>
                 <a href="#" class="page">8</a>
                 <a href="#" class="page">9</a>
                 <a href="#" class="page">10</a>*@
-                @if (ViewBag.currentShowPage < pageNum - 1)
-                {
-                    <a href="/Blog/Index?page=@(ViewBag.currentShowPage + 1)" class="next">Next</a>
-                }
-            </div>
-        </footer>
-    }
+            @if (ViewBag.currentShowPage < pageNum)
+            {
+                <a href="/Blog/Index?page=@(ViewBag.currentShowPage + 1)" class="next">Next</a>
+            }
+        </div>
+    </footer>
 
 }    
 
