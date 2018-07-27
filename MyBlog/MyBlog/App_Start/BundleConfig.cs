@@ -37,7 +37,8 @@ namespace MyBlog
                 "~/Template/assets/js/main.js",
                 "~/Template/custom/js/settings/DefineManager.js",
                 "~/Template/custom/js/utils/LogManager.js",
-                "~/Template/custom/js/core/TabMenuManager.js"
+                "~/Template/custom/js/core/TabMenuManager.js",
+                "~/Template/custom/js/core/AuthManager.js"
                 ));
 
             bundles.Add(new StyleBundle("~/Blog/css").Include(

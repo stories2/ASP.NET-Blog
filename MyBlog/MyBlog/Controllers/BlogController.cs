@@ -95,5 +95,17 @@ namespace MyBlog.Controllers
 
             return View();
         }
+
+        [HttpGet]
+        public ActionResult SignIn()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult SignUp()
+        {
+            return View();
+        }
     }
 }

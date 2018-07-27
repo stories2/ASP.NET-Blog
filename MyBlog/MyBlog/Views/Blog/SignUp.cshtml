@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "SignUp";
+    Layout = "~/Views/Shared/_MyBlogBigLayout.cshtml";
+}
+
+<section class="post">
+    <div class="row">
+        <div class="col-12">
+            <h2>Sign Up</h2>
+        </div>
+        <div class="col-12">
+
+            <ul class="actions fit">
+                <li><a onclick="authManager.SignUp()" class="button primary fit">Google</a></li>
+            </ul>
+        </div>
+    </div>
+</section>
+<script>
+    function DocumentReadyFunc()
+    {
+        PrintLogMessage("SignUp", "DocumentReadyFunc", "init", LOG_LEVEL_INFO)
+        tabMenuManager.ActiveSecondMenu()
+        tabMenuManager.ChangeSecondMenu("Sign up", "/Blog/SignUp")
+    }
+</script>

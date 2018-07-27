@@ -211,9 +211,11 @@
     <Content Include="Template\assets\js\jquery.scrolly.min.js" />
     <Content Include="Template\assets\js\main.js" />
     <Content Include="Template\assets\js\util.js" />
+    <Content Include="Template\custom\js\core\AuthManager.js" />
     <Content Include="Template\custom\js\core\TabMenuManager.js" />
     <Content Include="Template\custom\js\settings\DefineManager.js" />
     <Content Include="Template\custom\js\utils\LogManager.js" />
+    <Content Include="Template\Login.html" />
     <Content Include="Template\ShowSelectedArticle.html" />
     <Content Include="Template\Error.html" />
     <Content Include="Template\UploadNewArticle.html" />
@@ -288,6 +290,8 @@
     <Content Include="Views\Blog\WriteNewArticle.cshtml" />
     <Content Include="Views\Blog\Error.cshtml" />
     <Content Include="Views\Blog\ShowSelectedArticle.cshtml" />
+    <Content Include="Views\Blog\SignIn.cshtml" />
+    <Content Include="Views\Blog\SignUp.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
