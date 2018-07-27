@@ -21,7 +21,7 @@ namespace MyBlog.Controllers
         // GET: Blog
         public ActionResult Index(int page = DefineManager.DEFAULT_SHOW_PAGE_NUMBER)
         {
-            ViewBag.latestArticleList = myBlogDBManager.GetLatestArticeList();
+            ViewBag.latestArticleList = myBlogDBManager.GetLatestArticeList(page);
             ViewBag.articleListCount = myBlogDBManager.GetCountOfArticleList();
             ViewBag.limitOfPrintArticleInOnePage = DefineManager.LIMIT_OF_SHOW_ARTICLES;
             ViewBag.currentShowPage = page;
