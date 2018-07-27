@@ -33,11 +33,27 @@ AuthManager.prototype.CurrentAuthStatus = function()
     {
         if (currentUser)
         {
+            SetSignedInUserProfile(currentUser.displayName, currentUser.email, currentUser.photoURL)
+            ShowOrHideSignedInUserProfile(SHOW_ELEMENTS)
             PrintLogMessage("AuthManager", "CurrentAuthStatus", "user signed in: " + JSON.stringify(currentUser), LOG_LEVEL_DEBUG)
         }
         else
         {
+            SetSignedInUserProfile("", "", "")
+            ShowOrHideSignedInUserProfile(HIDE_ELEMENTS)
             PrintLogMessage("AuthManager", "CurrentAuthStatus", "user not signed in", LOG_LEVEL_INFO)
         }
     })
+}
+
+AuthManager.prototype.SignOut = function()
+{
+    PrintLogMessage("AuthManager", "SignOut", "start process sign out", LOG_LEVEL_INFO)
+    this.firebase.auth().signOut().then(function () {
+        // Sign-out successful.
+        PrintLogMessage("AuthManager", "SignOut", "sign out successfully. bye bye", LOG_LEVEL_INFO)
+    }).catch(function (error) {
+        // An error happened.
+        PrintLogMessage("AuthManager", "SignOut", "sign out failed: " + error, LOG_LEVEL_ERROR)
+    });
 }

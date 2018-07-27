@@ -38,12 +38,14 @@ namespace MyBlog
                 "~/Template/custom/js/settings/DefineManager.js",
                 "~/Template/custom/js/utils/LogManager.js",
                 "~/Template/custom/js/core/TabMenuManager.js",
-                "~/Template/custom/js/core/AuthManager.js"
+                "~/Template/custom/js/core/AuthManager.js",
+                "~/Template/custom/js/view/MyBlogBigLayoutManager.js"
                 ));
 
             bundles.Add(new StyleBundle("~/Blog/css").Include(
                 "~/Template/assets/css/main.css",
-                "~/Template/assets/css/noscript.css"
+                "~/Template/assets/css/noscript.css",
+                "~/Template/custom/css/Profile.css"
                 ));
         }
     }

@@ -10,6 +10,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="/Template/assets/css/main.css" />
+    <link rel="stylesheet" href="/Template/custom/css/Profile.css"/>
     <noscript><link rel="stylesheet" href="/Template/assets/css/noscript.css" /></noscript>
 </head>
 <body class="is-preload">
@@ -54,7 +55,27 @@
 
         <!-- Main -->
         <div id="main">
+            <section id="signInUserProfile">
+                <div class="row">
 
+                    <div class="col-12-small col-6">
+                        <label id="userDisplayName">Hello </label>
+                        <label id="userEmail">Email </label>
+                    </div>
+                    <div class="col-6 col-12-small">
+                        <span class="image right"><img id="profileImage" src="" alt="" /></span>
+                    </div>
+                    <div class="col-12-small col-6">
+                        <ul class="actions fit">
+                            <li><a onclick="authManager.SignOut()" class="button primary fit">Sign out</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-6">
+
+                    </div>
+                </div>
+            </section>
+            
             @RenderBody()
 
             
@@ -129,6 +150,7 @@
     <script src="/Template/assets/js/main.js"></script>
     <script src="/Template/custom/js/settings/DefineManager.js"></script>
     <script src="/Template/custom/js/utils/LogManager.js"></script>
+    <script src="/Template/custom/js/view/MyBlogBigLayoutManager.js"></script>
     <script src="/Template/custom/js/core/TabMenuManager.js"></script>
     <script src="/Template/custom/js/core/AuthManager.js"></script>
 
