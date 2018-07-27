@@ -15,15 +15,21 @@ namespace MyBlog.Controllers
             this.myBlogEntities = myBlogEntities;
         }
 
-        public List<Article> GetLatestArticeList(int limit = DefineManager.LIMIT_OF_SHOW_ARTICLES)
+        public List<Article> GetLatestArticeList(int pageNum = DefineManager.DEFAULT_PAGE_NUM, int limit = DefineManager.LIMIT_OF_SHOW_ARTICLES)
         {
-            List<Article> latestArticleList = myBlogEntities.Article.OrderByDescending(article => article.articleID).Take(limit).ToList();
+            List<Article> latestArticleList = myBlogEntities.Article
+                .Where(article => article.isDelete == DefineManager.NOT_DELETED_ARTICLE)
+                .OrderByDescending(article => article.articleID)
+                .Skip((pageNum - 1) * limit)
+                .Take(limit).ToList();
             return latestArticleList;
         }
 
         public int GetCountOfArticleList()
         {
-            int articleListCount = myBlogEntities.Article.Count();
+            int articleListCount = myBlogEntities.Article
+                .Where(article => article.isDelete == DefineManager.NOT_DELETED_ARTICLE)
+                .Count();
             return articleListCount;
         }
 
@@ -32,7 +38,9 @@ namespace MyBlog.Controllers
             Article article = null;
             try
             {
-                article = myBlogEntities.Article.Where(articleModel => articleModel.articleID == articleID).First<Article>();
+                article = myBlogEntities.Article
+                    .Where(articleModel => articleModel.isDelete == DefineManager.NOT_DELETED_ARTICLE)
+                    .Where(articleModel => articleModel.articleID == articleID).First<Article>();
             }
             catch(Exception except)
             {

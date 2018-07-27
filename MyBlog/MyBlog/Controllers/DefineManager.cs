@@ -18,7 +18,9 @@ namespace MyBlog.Controllers
             LOG_LEVEL_INFO = 1,
             LOG_LEVEL_DEBUG = 2,
             LOG_LEVEL_WARN = 3,
-            LOG_LEVEL_ERROR = 4;
+            LOG_LEVEL_ERROR = 4,
+            
+            DEFAULT_PAGE_NUM = 1;
 
         public const string
             LOG_DEFAULT_CLASS = "LogManager",
