@@ -34,7 +34,12 @@ namespace MyBlog.Controllers
             LOG_LEVEL_WARN_STR = "W",
             LOG_LEVEL_ERROR_STR = "E",
 
-            DEFAULT_WRITER = "stories2"
+            DEFAULT_WRITER = "stories2",
+
+            FIREBASE_FUNCTIONS_ENDPOINT_CHECK_TOKEN = "https://us-central1-myblogasp-net.cloudfunctions.net/checkToken",
+
+            VERIFIED_CHECKER_RESULT_OK = "OK",
+            VERIFIED_CHECKER_RESULT_FAIL = "Fail"
             ;
 
         public const byte

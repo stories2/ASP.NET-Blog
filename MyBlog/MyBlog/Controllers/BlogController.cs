@@ -11,11 +11,12 @@ namespace MyBlog.Controllers
     {
         MyBlogEntities myBlogEntities;
         MyBlogDBManager myBlogDBManager;
-
+        HttpsManager httpsManager;
         public BlogController()
         {
             myBlogEntities = new MyBlogEntities();
             myBlogDBManager = new MyBlogDBManager(myBlogEntities);
+            httpsManager = new HttpsManager();
         }
 
         // GET: Blog
@@ -43,20 +44,29 @@ namespace MyBlog.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public void UploadNewArticle(Article newArticle)
+        public void UploadNewArticle(Article newArticle, string clientToken)
         {
             if (ModelState.IsValid)
             {
                 LogManager.PrintLogMessage("BlogController", "UploadNewArticle", "current token is valied", DefineManager.LOG_LEVEL_INFO);
-                try
+                if(clientToken != null)
                 {
-                    LogManager.PrintLogMessage("BlogController", "UploadNewArticle", "article title: " + newArticle.title + " highlight: " +
-                        newArticle.highlightText + " image url: " + newArticle.imgUrl + " content len: " + newArticle.articleContent.Length, DefineManager.LOG_LEVEL_DEBUG);
-                    myBlogDBManager.InsertNewArticle(newArticle);
+                    LogManager.PrintLogMessage("BlogController", "UploadNewArticle", "token is available?: " + clientToken, DefineManager.LOG_LEVEL_DEBUG);
+                    httpsManager.IsTokenVerified(clientToken);
+                    try
+                    {
+                        LogManager.PrintLogMessage("BlogController", "UploadNewArticle", "article title: " + newArticle.title + " highlight: " +
+                            newArticle.highlightText + " image url: " + newArticle.imgUrl + " content len: " + newArticle.articleContent.Length, DefineManager.LOG_LEVEL_DEBUG);
+                        myBlogDBManager.InsertNewArticle(newArticle);
+                    }
+                    catch (Exception except)
+                    {
+                        LogManager.PrintLogMessage("BlogController", "UploadNewArticle", "exception accepted while upload new article: " + except, DefineManager.LOG_LEVEL_ERROR);
+                    }
                 }
-                catch(Exception except)
+                else
                 {
-                    LogManager.PrintLogMessage("BlogController", "UploadNewArticle", "exception accepted while upload new article: " + except, DefineManager.LOG_LEVEL_ERROR);
+                    LogManager.PrintLogMessage("BlogController", "UploadNewArticle", "token is null", DefineManager.LOG_LEVEL_WARN);
                 }
             }
             else

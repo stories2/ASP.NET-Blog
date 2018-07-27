@@ -43,6 +43,8 @@
                 @Html.TextAreaFor(articleModel => articleModel.articleContent, new { placeholder = "Content", rows = "6" })
             </div>
 
+            <input id="clientToken" name="clientToken" value="" type="hidden"/>
+
             <div class="col-12">
                 <ul class="actions">
                     <li><input type="submit" value="Send Message" class="primary" /></li>
@@ -60,9 +62,15 @@
         tabMenuManager.ActiveSecondMenu()
         tabMenuManager.ChangeSecondMenu("WRITE NEW ARTICLE", "/Blog/WriteNewArticle")
 
-        authManager.CurrentAuthStatus(undefined, function ()
+        authManager.CurrentAuthStatus(function ()
+        {
+            authManager.GenerateVerifyToken(function (generatedToken) {
+                $("#clientToken").val(generatedToken)
+            })
+        },
+        function ()
         {
             $(location).attr('href', '/Blog/SignIn');
-        })
+        })        
     }
 </script>

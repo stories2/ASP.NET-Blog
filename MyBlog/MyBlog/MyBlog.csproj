@@ -133,6 +133,7 @@
     <Compile Include="Controllers\BlogController.cs" />
     <Compile Include="Controllers\DefineManager.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\HttpsManager.cs" />
     <Compile Include="Controllers\LogManager.cs" />
     <Compile Include="Controllers\MyBlogDBManager.cs" />
     <Compile Include="Global.asax.cs">

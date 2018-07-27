@@ -81,3 +81,19 @@ AuthManager.prototype.IsUserSignedIn = function()
         return false;
     }
 }
+
+AuthManager.prototype.GenerateVerifyToken = function(callbackFunc)
+{
+    this.firebase.auth().currentUser.getIdToken(/* forceRefresh */ true)
+        .then(function (idToken) {
+            // Send token to your backend via HTTPS
+            // ...
+            PrintLogMessage("AuthManager", "GenerateVerifyToken", "generate token successfully", LOG_LEVEL_INFO)
+            callbackFunc(idToken)
+        })
+        .catch(function (error) {
+            // Handle error
+            PrintLogMessage("AuthManager", "GenerateVerifyToken", "cannot generate token", LOG_LEVEL_WARN)
+            callbackFunc(null)
+        });
+}
