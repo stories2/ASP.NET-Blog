@@ -23,5 +23,10 @@
         PrintLogMessage("SignIn", "DocumentReadyFunc", "init", LOG_LEVEL_INFO)
         tabMenuManager.ActiveSecondMenu()
         tabMenuManager.ChangeSecondMenu("Sign in", "/Blog/SignIn")
+
+        authManager.CurrentAuthStatus(function()
+        {
+            $(location).attr('href', '/Blog/Index');
+        })
     }
 </script>

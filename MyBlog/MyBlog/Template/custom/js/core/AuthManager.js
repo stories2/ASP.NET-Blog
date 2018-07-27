@@ -25,7 +25,7 @@ AuthManager.prototype.SignIn = function ()
         })
 }
 
-AuthManager.prototype.CurrentAuthStatus = function()
+AuthManager.prototype.CurrentAuthStatus = function(signInCallback, notSignedInCallback)
 {
     PrintLogMessage("AuthManager", "CurrentAuthStatus", "set auth status change listener", LOG_LEVEL_INFO)
 
@@ -36,12 +36,20 @@ AuthManager.prototype.CurrentAuthStatus = function()
             SetSignedInUserProfile(currentUser.displayName, currentUser.email, currentUser.photoURL)
             ShowOrHideSignedInUserProfile(SHOW_ELEMENTS)
             PrintLogMessage("AuthManager", "CurrentAuthStatus", "user signed in: " + JSON.stringify(currentUser), LOG_LEVEL_DEBUG)
+            if (signInCallback !== undefined)
+            {
+                signInCallback()
+            }
         }
         else
         {
             SetSignedInUserProfile("", "", "")
             ShowOrHideSignedInUserProfile(HIDE_ELEMENTS)
             PrintLogMessage("AuthManager", "CurrentAuthStatus", "user not signed in", LOG_LEVEL_INFO)
+            if(notSignedInCallback !== undefined) 
+            {
+                notSignedInCallback()
+            }
         }
     })
 }
@@ -56,4 +64,20 @@ AuthManager.prototype.SignOut = function()
         // An error happened.
         PrintLogMessage("AuthManager", "SignOut", "sign out failed: " + error, LOG_LEVEL_ERROR)
     });
+}
+
+AuthManager.prototype.IsUserSignedIn = function()
+{
+    currentUserInfo = JSON.stringify(this.firebase.auth().currentUser)
+    PrintLogMessage("AuthManager", "IsUserSignedIn", "check this user already signed in: " + currentUserInfo, LOG_LEVEL_DEBUG)
+    if (this.firebase.auth().currentUser)
+    {
+        PrintLogMessage("AuthManager", "IsUserSignedIn", "yes this user already signed in", LOG_LEVEL_INFO)
+        return true;
+    }
+    else
+    {
+        PrintLogMessage("AuthManager", "IsUserSignedIn", "no, this user not signed in", LOG_LEVEL_WARN)
+        return false;
+    }
 }

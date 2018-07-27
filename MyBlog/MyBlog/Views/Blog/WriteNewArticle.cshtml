@@ -59,5 +59,10 @@
         PrintLogMessage("WriteNewArticle", "DocumentReadyFunc", "init", LOG_LEVEL_INFO)
         tabMenuManager.ActiveSecondMenu()
         tabMenuManager.ChangeSecondMenu("WRITE NEW ARTICLE", "/Blog/WriteNewArticle")
+
+        authManager.CurrentAuthStatus(undefined, function ()
+        {
+            $(location).attr('href', '/Blog/SignIn');
+        })
     }
 </script>
