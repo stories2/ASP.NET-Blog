@@ -55,7 +55,7 @@ namespace MyBlog.Controllers
             {
                 article.isDelete = DefineManager.NOT_DELETED_ARTICLE;
                 article.uploadDateTime = DateTime.Now;
-                article.writer = DefineManager.DEFAULT_WRITER;
+                //article.writer = DefineManager.DEFAULT_WRITER;
                 myBlogEntities.Article.Add(article);
                 myBlogEntities.SaveChanges();
             }

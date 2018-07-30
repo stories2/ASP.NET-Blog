@@ -18,7 +18,7 @@ namespace MyBlog.Controllers
 
         }
 
-        public bool IsTokenVerified(string clientToken)
+        public string IsTokenVerified(string clientToken)
         {
             webRequest = WebRequest.Create(DefineManager.FIREBASE_FUNCTIONS_ENDPOINT_CHECK_TOKEN);
             webRequest.Method = "POST";
@@ -45,18 +45,21 @@ namespace MyBlog.Controllers
 
             JObject responseObj = JObject.Parse(responseData);
             string responseResultValue = responseObj.GetValue("Result").ToString();
+            
             LogManager.PrintLogMessage("HttpsManager", "IsTokenVerified", "response is: " + responseResultValue, DefineManager.LOG_LEVEL_DEBUG);
 
             switch (responseResultValue)
             {
                 case DefineManager.VERIFIED_CHECKER_RESULT_OK:
+                    string responseUserDisplayName = responseObj.GetValue("displayName").ToString();
+                    LogManager.PrintLogMessage("HttpsManager", "IsTokenVerified", "user display name is: " + responseUserDisplayName, DefineManager.LOG_LEVEL_DEBUG);
 
-                    return true;
+                    return responseUserDisplayName;
                 case DefineManager.VERIFIED_CHECKER_RESULT_FAIL:
-
-                    return false;
+                    LogManager.PrintLogMessage("HttpsManager", "IsTokenVerified", "failed to verify token", DefineManager.LOG_LEVEL_WARN);
+                    return null;
                 default:
-                    return false;
+                    return null;
             }
         }
     }

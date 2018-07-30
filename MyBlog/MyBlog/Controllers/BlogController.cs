@@ -52,16 +52,24 @@ namespace MyBlog.Controllers
                 if(clientToken != null)
                 {
                     LogManager.PrintLogMessage("BlogController", "UploadNewArticle", "token is available?: " + clientToken, DefineManager.LOG_LEVEL_DEBUG);
-                    httpsManager.IsTokenVerified(clientToken);
-                    try
+                    string userDisplayName = httpsManager.IsTokenVerified(clientToken);
+                    if(userDisplayName != null)
                     {
-                        LogManager.PrintLogMessage("BlogController", "UploadNewArticle", "article title: " + newArticle.title + " highlight: " +
-                            newArticle.highlightText + " image url: " + newArticle.imgUrl + " content len: " + newArticle.articleContent.Length, DefineManager.LOG_LEVEL_DEBUG);
-                        myBlogDBManager.InsertNewArticle(newArticle);
+                        try
+                        {
+                            newArticle.writer = userDisplayName;
+                            LogManager.PrintLogMessage("BlogController", "UploadNewArticle", "article title: " + newArticle.title + " highlight: " +
+                                newArticle.highlightText + " image url: " + newArticle.imgUrl + " content len: " + newArticle.articleContent.Length, DefineManager.LOG_LEVEL_DEBUG);
+                            myBlogDBManager.InsertNewArticle(newArticle);
+                        }
+                        catch (Exception except)
+                        {
+                            LogManager.PrintLogMessage("BlogController", "UploadNewArticle", "exception accepted while upload new article: " + except, DefineManager.LOG_LEVEL_ERROR);
+                        }
                     }
-                    catch (Exception except)
+                    else
                     {
-                        LogManager.PrintLogMessage("BlogController", "UploadNewArticle", "exception accepted while upload new article: " + except, DefineManager.LOG_LEVEL_ERROR);
+                        LogManager.PrintLogMessage("BlogController", "UploadNewArticle", "cannot recognize user, so you cannot insert new article", DefineManager.LOG_LEVEL_WARN);
                     }
                 }
                 else
