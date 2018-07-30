@@ -70,6 +70,18 @@ namespace MyBlog.Controllers
             try
             {
                 LogManager.PrintLogMessage("MyBlogDBManager", "AppendNewUser", "try to append new user: " + userInfoModel.uid, DefineManager.LOG_LEVEL_DEBUG);
+                bool userExistStatus = myBlogEntities.UserInfo.Any(userInfoModelFromDB => userInfoModelFromDB.uid == userInfoModel.uid);
+                LogManager.PrintLogMessage("MyBlogDBManager", "AppendNewUser", "user exist status: " + userExistStatus, DefineManager.LOG_LEVEL_DEBUG);
+                if(userExistStatus == false)
+                {
+                    UserInfo userInfo = new UserInfo();
+                    userInfo.email = userInfoModel.email;
+                    userInfo.uid = userInfoModel.uid;
+                    userInfo.userDisplayName = userInfoModel.displayName;
+                    myBlogEntities.UserInfo.Add(userInfo);
+                    myBlogEntities.SaveChanges();
+                    LogManager.PrintLogMessage("MyBlogDBManager", "AppendNewUser", "ok new user appended", DefineManager.LOG_LEVEL_INFO);
+                }
                 return true;
             }
             catch(Exception except)
