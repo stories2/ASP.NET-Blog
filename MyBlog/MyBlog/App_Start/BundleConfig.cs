@@ -39,7 +39,10 @@ namespace MyBlog
                 "~/Template/custom/js/utils/LogManager.js",
                 "~/Template/custom/js/core/TabMenuManager.js",
                 "~/Template/custom/js/core/AuthManager.js",
-                "~/Template/custom/js/view/MyBlogBigLayoutManager.js"
+                "~/Template/custom/js/view/MyBlogBigLayoutManager.js",
+                "~/Template/custom/js/core/DataTransferManager.js",
+                "~/Template/custom/js/core/UserManager.js",
+                "~/Template/custom/js/view/SignInLayoutManager.js"
                 ));
 
             bundles.Add(new StyleBundle("~/Blog/css").Include(

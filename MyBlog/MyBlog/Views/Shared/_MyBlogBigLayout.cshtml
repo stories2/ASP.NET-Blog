@@ -153,6 +153,8 @@
     <script src="/Template/custom/js/view/MyBlogBigLayoutManager.js"></script>
     <script src="/Template/custom/js/core/TabMenuManager.js"></script>
     <script src="/Template/custom/js/core/AuthManager.js"></script>
+    <script src="/Template/custom/js/core/DataTransferManager.js"></script>
+    <script src="/Template/custom/js/core/UserManager.js"></script>
 
     <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase.js"></script>
     <script>
@@ -171,6 +173,8 @@
         {
             tabMenuManager = new TabMenuManager()
             authManager = new AuthManager(firebase)
+            userManager = new UserManager(firebase)
+
             authManager.CurrentAuthStatus()
             DocumentReadyFunc()
         })

@@ -12,24 +12,25 @@
         <div class="col-12">
 
             <ul class="actions fit">
-                <li><a onclick="authManager.SignIn()" class="button primary fit">Google</a></li>
+                <li><a id="googleSignIn" onclick="" class="button primary fit">Google</a></li>
             </ul>
         </div>
     </div>
 </section>
+<script src="/Template/custom/js/view/SignInLayoutManager.js"></script>
 <script>
     function DocumentReadyFunc()
     {
+
         PrintLogMessage("SignIn", "DocumentReadyFunc", "init", LOG_LEVEL_INFO)
         tabMenuManager.ActiveSecondMenu()
         tabMenuManager.ChangeSecondMenu("Sign in", "/Blog/SignIn")
 
-        authManager.CurrentAuthStatus(function()
-        {
-            //$(location).attr('href', '/Blog/Index');
-            authManager.GenerateToken(function (token) {
+        BtnOnClickGoogleSignIn(function () {
+            authManager.CurrentAuthStatus(function () {
+                //$(location).attr('href', '/Blog/Index');
 
             })
-        })
+        });        
     }
 </script>

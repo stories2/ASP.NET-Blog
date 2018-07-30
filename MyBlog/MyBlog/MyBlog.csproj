@@ -214,10 +214,13 @@
     <Content Include="Template\assets\js\util.js" />
     <Content Include="Template\custom\css\Profile.css" />
     <Content Include="Template\custom\js\core\AuthManager.js" />
+    <Content Include="Template\custom\js\core\DataTransferManager.js" />
     <Content Include="Template\custom\js\core\TabMenuManager.js" />
+    <Content Include="Template\custom\js\core\UserManager.js" />
     <Content Include="Template\custom\js\settings\DefineManager.js" />
     <Content Include="Template\custom\js\utils\LogManager.js" />
     <Content Include="Template\custom\js\view\MyBlogBigLayoutManager.js" />
+    <Content Include="Template\custom\js\view\SignInLayoutManager.js" />
     <Content Include="Template\Login.html" />
     <Content Include="Template\ShowSelectedArticle.html" />
     <Content Include="Template\Error.html" />

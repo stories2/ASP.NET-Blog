@@ -13,22 +13,22 @@ AuthManager.prototype.GenerateToken = function (callbackFunc) {
     firebaseAuth = this.firebase.auth()
     currentUser = firebaseAuth.currentUser
     if (currentUser) {
-        PrintLogMessage("AuthManager", "SignIn", "user info accepted", LOG_LEVEL_INFO)
+        PrintLogMessage("AuthManager", "GenerateToken", "user info accepted", LOG_LEVEL_INFO)
         currentUser.getIdToken(/* forceRefresh */ true).then(function (idToken) {
             // Send token to your backend via HTTPS
             // ...
-            PrintLogMessage("AuthManager", "SignIn", "token generated", LOG_LEVEL_INFO);
+            PrintLogMessage("AuthManager", "GenerateToken", "token generated", LOG_LEVEL_INFO);
 
             if (callbackFunc !== undefined) {
                 callbackFunc(idToken)
             }
         }).catch(function (error) {
             // Handle error
-            PrintLogMessage("AuthManager", "SignIn", "failed to get token: " + error, LOG_LEVEL_ERROR);
+            PrintLogMessage("AuthManager", "GenerateToken", "failed to get token: " + error, LOG_LEVEL_ERROR);
         });
     }
     else {
-        PrintLogMessage("AuthManager", "SignIn", "user info not accepted", LOG_LEVEL_WARN)
+        PrintLogMessage("AuthManager", "GenerateToken", "user info not accepted", LOG_LEVEL_WARN)
     }
 }
 
