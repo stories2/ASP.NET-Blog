@@ -161,6 +161,7 @@
     <Compile Include="Models\UserInfo.cs">
       <DependentUpon>MyBlogModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\UserInfoModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

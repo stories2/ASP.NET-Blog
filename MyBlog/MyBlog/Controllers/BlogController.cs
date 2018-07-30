@@ -117,5 +117,15 @@ namespace MyBlog.Controllers
         {
             return View();
         }
+
+        [HttpPost]
+        public ActionResult NewUser(UserInfoModel userInfoModel)
+        {
+            LogManager.PrintLogMessage("BlogController", "NewUser", "display name: " +
+                userInfoModel.displayName + " email: " + userInfoModel.email + " uid: " + userInfoModel.uid, DefineManager.LOG_LEVEL_DEBUG);
+
+            var resultMsg = new { msg="dev"};
+            return Json(resultMsg, JsonRequestBehavior.AllowGet);
+        }
     }
 }
