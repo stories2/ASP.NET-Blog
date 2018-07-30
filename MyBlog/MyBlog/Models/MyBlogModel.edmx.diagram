@@ -5,8 +5,8 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="07ba24fc59c74541af2b846f519a52bf" Name="Diagram1">
-        <EntityTypeShape EntityType="MyBlogModel.UserInfo" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="MyBlogModel.Article" Width="1.5" PointX="6.25" PointY="1.875" />
+        <EntityTypeShape EntityType="MyBlogModel.UserInfo" Width="1.5" PointX="2.125" PointY="1" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
