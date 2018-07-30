@@ -124,7 +124,18 @@ namespace MyBlog.Controllers
             LogManager.PrintLogMessage("BlogController", "NewUser", "display name: " +
                 userInfoModel.displayName + " email: " + userInfoModel.email + " uid: " + userInfoModel.uid, DefineManager.LOG_LEVEL_DEBUG);
 
-            var resultMsg = new { msg="dev"};
+            bool status = myBlogDBManager.AppendNewUser(userInfoModel);
+
+            Dictionary<string, string> resultMsg = new Dictionary<string, string>();
+            if (status)
+            {
+                resultMsg["msg"] = DefineManager.RESULT_MSG_OK;
+            }
+            else
+            {
+                resultMsg["msg"] = DefineManager.RESULT_MSG_FAIL;
+            }
+
             return Json(resultMsg, JsonRequestBehavior.AllowGet);
         }
     }

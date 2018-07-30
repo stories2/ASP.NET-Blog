@@ -39,7 +39,10 @@ namespace MyBlog.Controllers
             FIREBASE_FUNCTIONS_ENDPOINT_CHECK_TOKEN = "https://us-central1-myblogasp-net.cloudfunctions.net/checkToken",
 
             VERIFIED_CHECKER_RESULT_OK = "OK",
-            VERIFIED_CHECKER_RESULT_FAIL = "Fail"
+            VERIFIED_CHECKER_RESULT_FAIL = "Fail",
+
+            RESULT_MSG_OK = "ok",
+            RESULT_MSG_FAIL = "fail"
             ;
 
         public const byte

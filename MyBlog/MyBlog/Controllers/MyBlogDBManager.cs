@@ -64,5 +64,19 @@ namespace MyBlog.Controllers
                 LogManager.PrintLogMessage("MyBlogDBManager", "InsertNewArticle", "cannot insert new article: " + article.articleID + " except: " + except, DefineManager.LOG_LEVEL_ERROR);
             }
         }
+
+        public bool AppendNewUser(UserInfoModel userInfoModel)
+        {
+            try
+            {
+                
+                return true;
+            }
+            catch(Exception except)
+            {
+                LogManager.PrintLogMessage("MyBlogDBManager", "AppendNewUser", "failed to append new user: " + except, DefineManager.LOG_LEVEL_ERROR);
+            }
+            return false;
+        }
     }
 }
