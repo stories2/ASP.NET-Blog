@@ -14,7 +14,7 @@ namespace MyBlog.Models
     
     public partial class UserInfo
     {
-        public string userID { get; set; }
+        public string userDisplayName { get; set; }
         public string email { get; set; }
         public string uid { get; set; }
     }

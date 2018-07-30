@@ -69,7 +69,7 @@ namespace MyBlog.Controllers
         {
             try
             {
-                
+                LogManager.PrintLogMessage("MyBlogDBManager", "AppendNewUser", "try to append new user: " + userInfoModel.uid, DefineManager.LOG_LEVEL_DEBUG);
                 return true;
             }
             catch(Exception except)
