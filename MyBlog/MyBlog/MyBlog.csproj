@@ -190,6 +190,7 @@
     <Content Include="Models\MyBlogModel.edmx.diagram">
       <DependentUpon>MyBlogModel.edmx</DependentUpon>
     </Content>
+    <None Include="Properties\PublishProfiles\DeployTest.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
