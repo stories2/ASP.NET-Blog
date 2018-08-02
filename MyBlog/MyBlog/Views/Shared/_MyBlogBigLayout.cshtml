@@ -9,8 +9,9 @@
     <title>Massively by HTML5 UP</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-    @Styles.Render("~/Blog/css");
-    @Scripts.Render("~/Blog/js");
+
+    @Styles.Render("~/Blog/css")
+    @Styles.Render("~/Blog/Angular/css")
 </head>
 <body class="is-preload">
 
@@ -74,7 +75,9 @@
                     </div>
                 </div>
             </section>
-            
+            <div ng-app="appRoot" ng-controller="testController">
+                {{ greeting }}
+            </div>
             @RenderBody()
 
             
@@ -141,6 +144,9 @@
 
     <!-- Scripts -->
 
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/Blog/js")
+    @Scripts.Render("~/Blog/Angular")
     <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase.js"></script>
     <script>
         // Initialize Firebase

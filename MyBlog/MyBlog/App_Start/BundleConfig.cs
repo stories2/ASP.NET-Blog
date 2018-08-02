@@ -28,7 +28,6 @@ namespace MyBlog
                       "~/Content/site.css"));
 
             bundles.Add(new ScriptBundle("~/Blog/js").Include(
-                "~/Template/assets/js/jquery.min.js",
                 "~/Template/assets/js/jquery.scrollex.min.js",
                 "~/Template/assets/js/jquery.scrolly.min.js",
                 "~/Template/assets/js/browser.min.js",
@@ -45,10 +44,20 @@ namespace MyBlog
                 "~/Template/custom/js/view/SignInLayoutManager.js"
                 ));
 
+            bundles.Add(new ScriptBundle("~/Blog/Angular").Include(
+                "~/Scripts/angular.js",
+                "~/Scripts/angular-*",
+                "~/Scripts/app/*.js"
+                ));
+
             bundles.Add(new StyleBundle("~/Blog/css").Include(
                 "~/Template/assets/css/main.css",
                 "~/Template/assets/css/noscript.css",
                 "~/Template/custom/css/Profile.css"
+                ));
+
+            bundles.Add(new StyleBundle("~/Blog/Angular/css").Include(
+                "~/Content/angular-*"
                 ));
         }
     }
