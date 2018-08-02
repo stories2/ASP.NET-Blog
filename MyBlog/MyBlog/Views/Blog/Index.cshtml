@@ -28,7 +28,7 @@ current show page: @ViewBag.currentShowPage</code></pre>*@
 {
     //var featuredPost = ViewBag.latestArticleList[0];
     <!-- Featured Post -->
-    <article class="post featured" ng-app="featurePost" ng-controller="getFeaturePost" ng-init="getCurrentPageArticles(@ViewBag.currentShowPage)">
+    <article class="post featured" ng-app="featurePost" ng-controller="getFeaturePosts" ng-init="getCurrentPageArticles(@ViewBag.currentShowPage)">
             <header class="major">
                 <span class="date">{{ postUploadDateTime }}</span>@*@featuredPost.uploadDateTime*@ 
                 <h2>
@@ -49,7 +49,7 @@ current show page: @ViewBag.currentShowPage</code></pre>*@
     if (articleCount > 1)
     {
         <!-- Posts -->
-        <section class="posts">
+        <section class="posts" ng-app="normalPost" ng-controller="getNormalPosts" ng-init="getCurrentPageArticles(@ViewBag.currentShowPage)">
             @for(i = 1; i < articleCount; i ++) 
             {
                 var currentPost = ViewBag.latestArticleList[i];

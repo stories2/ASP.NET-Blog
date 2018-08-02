@@ -3,7 +3,7 @@
         $scope.testMsg = "test";
         appRootService.PrintLogMessage("featurePost", "featurePostController", "say, " + appRootService.SayMsg('Hi'), LOG_LEVEL_DEBUG)
     })
-    .controller("getFeaturePost", function ($scope, appRootService) {
+    .controller("getFeaturePosts", function ($scope, appRootService) {
         
         $scope.getCurrentPageArticles = function (currentPageNumber) {
             appRootService.PrintLogMessage("featurePost", "getFeaturePost", "current page number: " + currentPageNumber, LOG_LEVEL_DEBUG);
