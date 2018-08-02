@@ -4,12 +4,75 @@
     		return msg;
     	}
 
-    	var postReqCallback = function (transferData, successCallback, failCallback) {
-
+    	var postReqCallback = function (url, data, transferData, successCallback, failCallback, token) {
+    		$http({
+    			type: "POST",
+    			dataType: 'json',
+    			url: url,
+    			cache: false,
+    			contentType: 'application/x-www-form-urlencoded',
+    			data: data,
+    			crossDomain: true,
+    			// headers: {
+    			//     "Authorization": token
+    			// },
+    			xhrFields: {
+    				withCredentials: false
+    			},
+    			beforeSend: function (xhr) {
+    				if (typeof token != 'undefined') {
+    					printLogMessage("appRootService", "postReqCallback", "auth: " + token, LOG_LEVEL_DEBUG)
+    					xhr.setRequestHeader("Authorization", token);
+    				}
+    				else {
+    					printLogMessage("appRootService", "postReqCallback", "no token sending", LOG_LEVEL_WARN)
+    				}
+    			}
+    		})
+            .done(function (receivedData) {
+            	printLogMessage("appRootService", "postReqCallback", "data received successfully", LOG_LEVEL_INFO)
+        	    successFunc(receivedData)
+            })
+            .fail(function (xhr, textStatus, errorThrown) {
+            	printLogMessage("appRootService", "postReqCallback", "something has problem: " + textStatus, LOG_LEVEL_ERROR)
+        	    failFunc(xhr.responseText, textStatus)
+            });
     	}
 
-    	var getReqCallback = function (transferData, successCallback, failCallback) {
-            
+    	var getReqCallback = function (url, data, transferData, successCallback, failCallback, token) {
+    		$http({
+    			type: "GET",
+    			dataType: 'json',
+    			url: url,
+    			cache: false,
+    			contentType: 'application/x-www-form-urlencoded',
+    			data: data,
+    			async: false,
+    			crossDomain: true,
+    			// headers: {
+    			//     "Authorization": token
+    			// },
+    			xhrFields: {
+    				withCredentials: false
+    			},
+    			beforeSend: function (xhr) {
+    				if (typeof token != 'undefined') {
+    					PrintLogMessage("appRootService", "getReqCallback", "auth: " + token, LOG_LEVEL_DEBUG)
+    					xhr.setRequestHeader("Authorization", token);
+    				}
+    				else {
+    					PrintLogMessage("appRootService", "getReqCallback", "no token sending", LOG_LEVEL_WARN)
+    				}
+    			}
+    		})
+            .done(function (receivedData) {
+            	PrintLogMessage("appRootService", "getReqCallback", "data received successfully", LOG_LEVEL_INFO)
+        	    successFunc(receivedData)
+            })
+            .fail(function (xhr, textStatus, errorThrown) {
+            	PrintLogMessage("appRootService", "getReqCallback", "something has problem: " + textStatus, LOG_LEVEL_ERROR)
+        	    failFunc(xhr.responseText, textStatus)
+            });
     	}
 
     	var printLogMessage = function (className, methodName, message, logLevel) {

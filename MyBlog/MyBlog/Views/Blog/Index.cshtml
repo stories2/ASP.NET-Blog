@@ -24,28 +24,25 @@
 page num: @pageNum
 pageStartPoint: @pageStartPoint
 current show page: @ViewBag.currentShowPage</code></pre>*@
-<div ng-app="featurePost" ng-controller="featurePostController">
-        {{ testMsg }}
-</div>
 @if (articleCount > 0)
 {
     var featuredPost = ViewBag.latestArticleList[0];
     <!-- Featured Post -->
-    <article class="post featured" >
+    <article class="post featured" ng-app="featurePost" ng-controller="getFeaturePost">
             <header class="major">
-                <span class="date">@featuredPost.uploadDateTime</span>
+                <span class="date">{{ postUploadDateTime }}</span>@*@featuredPost.uploadDateTime*@ 
                 <h2>
-                    <a href="/Blog/ShowSelectedArticle?articleID=@featuredPost.articleID">
-                        #@featuredPost.articleID @featuredPost.title
+                    <a href="/Blog/ShowSelectedArticle?articleID={{ postID }}"> @*@featuredPost.articleID*@
+                        #{{ postID }} {{ title }} @*@featuredPost.articleID @featuredPost.title*@
                     </a>
                 </h2>
                 <p>
-                    @featuredPost.highlightText
+                    @*@featuredPost.highlightText*@ {{ highlightText }}
                 </p>
             </header>
-            <a href="/Blog/ShowSelectedArticle?articleID=@featuredPost.articleID" class="image main"><img src="@featuredPost.imgUrl" alt="" /></a>
+            <a href="/Blog/ShowSelectedArticle?articleID={{ postID }}" class="image main"><img src="{{ imgUrl }}" alt="" /></a>@*@featuredPost.articleID*@ @*@featuredPost.imgUrl*@
             <ul class="actions special">
-                <li><a href="/Blog/ShowSelectedArticle?articleID=@featuredPost.articleID" class="button large">Full Story</a></li>
+                <li><a href="/Blog/ShowSelectedArticle?articleID={{ postID }}" class="button large">Full Story</a></li>@*@featuredPost.articleID*@
             </ul>
     </article>
 
