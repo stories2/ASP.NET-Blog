@@ -39,7 +39,7 @@
         </header>
 
         <!-- Nav -->
-        <nav id="nav">
+        <nav id="nav" ng-app="appRoot" ng-controller="testController">
             <ul class="links" id="listOfMenu">
                 <li class="active"><a href="/Blog">Blog main</a></li>
                 <li><a href="generic.html">Write new article</a></li>
@@ -53,8 +53,14 @@
             </ul>
         </nav>
 
+        
         <!-- Main -->
         <div id="main">
+            <section>
+                @*<div ng-app="appRoot" ng-controller="testController">
+                    {{ greeting }}
+                </div>*@
+            </section>
             <section id="signInUserProfile">
                 <div class="row">
 
@@ -75,16 +81,16 @@
                     </div>
                 </div>
             </section>
-            <div ng-app="appRoot" ng-controller="testController">
-                {{ greeting }}
-            </div>
             @RenderBody()
-
             
 
         </div>
 
         <!-- Footer -->
+        @*<footer id="footer">
+            <section>
+            </section>
+        </footer>*@
         @*<footer id="footer">
             <section>
                 <form method="post" action="#">

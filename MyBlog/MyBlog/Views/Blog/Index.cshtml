@@ -24,11 +24,14 @@
 page num: @pageNum
 pageStartPoint: @pageStartPoint
 current show page: @ViewBag.currentShowPage</code></pre>*@
+<div ng-app="featurePost" ng-controller="featurePostController">
+        {{ testMsg }}
+</div>
 @if (articleCount > 0)
 {
     var featuredPost = ViewBag.latestArticleList[0];
     <!-- Featured Post -->
-    <article class="post featured">
+    <article class="post featured" >
             <header class="major">
                 <span class="date">@featuredPost.uploadDateTime</span>
                 <h2>
