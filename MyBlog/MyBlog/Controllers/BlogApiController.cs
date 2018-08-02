@@ -85,5 +85,34 @@ namespace MyBlog.Controllers
             }
             return resultMsg;
         }
+
+        [HttpGet]
+        public Dictionary<string, object> ShowSelectedArticle(int articleID = DefineManager.DEFAULT_SHOW_ARTICLE)
+        {
+            Dictionary<string, object> resultMsg = new Dictionary<string, object>();
+            resultMsg["article"] = myBlogDBManager.GetDetailOfArticle(articleID);
+            return resultMsg;
+        }
+
+        [HttpPost]
+        public Dictionary<string, object> NewUser([FromBody] UserInfoModel userInfoModel)
+        {
+            LogManager.PrintLogMessage("BlogApiController", "NewUser", "display name: " +
+                userInfoModel.displayName + " email: " + userInfoModel.email + " uid: " + userInfoModel.uid, DefineManager.LOG_LEVEL_DEBUG);
+
+            bool status = myBlogDBManager.AppendNewUser(userInfoModel);
+
+            Dictionary<string, object> resultMsg = new Dictionary<string, object>();
+            if (status)
+            {
+                resultMsg["msg"] = DefineManager.RESULT_MSG_OK;
+            }
+            else
+            {
+                resultMsg["msg"] = DefineManager.RESULT_MSG_FAIL;
+            }
+
+            return resultMsg;
+        }
     }
 }
