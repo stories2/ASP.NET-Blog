@@ -1,4 +1,4 @@
 ﻿angular.module("appRoot", [])
-    .controller('testController', ['$scope', function($scope) {
-        $scope.greeting = 'Hello';
-    }]);
+    .controller('testController', function($scope, appRootService){
+        $scope.greeting = appRootService.sayMsg('hello')
+    })

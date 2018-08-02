@@ -47,8 +47,10 @@ namespace MyBlog
             bundles.Add(new ScriptBundle("~/Blog/Angular").Include(
                 "~/Scripts/angular.js",
                 "~/Scripts/angular-*",
-                "~/Scripts/app/*.js"
-                ));
+                "~/Scripts/app/*.js",
+                "~/Scripts/app/service/*.js"
+                ).IncludeDirectory(
+                      "~/Scripts/app", "*.js"));
 
             bundles.Add(new StyleBundle("~/Blog/css").Include(
                 "~/Template/assets/css/main.css",
