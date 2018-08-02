@@ -1,7 +1,6 @@
 ﻿angular.module("appRoot", [])
         .controller('testController', function ($scope, $log, appRootService) {
-            //$scope.greeting = appRootService.sayMsg('hello')
-            $log.debug("say, " + appRootService.sayMsg('hello'));
+            appRootService.PrintLogMessage("appRoot", "testController", "say, " + appRootService.SayMsg('Hello'), LOG_LEVEL_DEBUG)
         })
         .config(function ($logProvider) {
             $logProvider.debugEnabled(true);
