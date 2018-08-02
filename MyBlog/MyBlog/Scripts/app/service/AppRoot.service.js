@@ -4,7 +4,7 @@
     		return msg;
     	}
 
-    	var postReqCallback = function (url, data, transferData, successCallback, failCallback, token) {
+    	var postReqCallback = function (url, data, successCallback, failCallback, token) {
     		$http({
     			type: "POST",
     			dataType: 'json',
@@ -29,17 +29,17 @@
     				}
     			}
     		})
-            .done(function (receivedData) {
+            .then(function (receivedData) {
             	printLogMessage("appRootService", "postReqCallback", "data received successfully", LOG_LEVEL_INFO)
-        	    successFunc(receivedData)
+            	successCallback(receivedData)
             })
-            .fail(function (xhr, textStatus, errorThrown) {
+            .catch(function (xhr, textStatus, errorThrown) {
             	printLogMessage("appRootService", "postReqCallback", "something has problem: " + textStatus, LOG_LEVEL_ERROR)
-        	    failFunc(xhr.responseText, textStatus)
+            	failCallback(xhr.responseText, textStatus)
             });
     	}
 
-    	var getReqCallback = function (url, data, transferData, successCallback, failCallback, token) {
+    	var getReqCallback = function (url, data, successCallback, failCallback, token) {
     		$http({
     			type: "GET",
     			dataType: 'json',
@@ -65,13 +65,13 @@
     				}
     			}
     		})
-            .done(function (receivedData) {
+            .then(function (receivedData) {
             	PrintLogMessage("appRootService", "getReqCallback", "data received successfully", LOG_LEVEL_INFO)
-        	    successFunc(receivedData)
+            	successCallback(receivedData)
             })
-            .fail(function (xhr, textStatus, errorThrown) {
+            .catch(function (xhr, textStatus, errorThrown) {
             	PrintLogMessage("appRootService", "getReqCallback", "something has problem: " + textStatus, LOG_LEVEL_ERROR)
-        	    failFunc(xhr.responseText, textStatus)
+            	failCallback(xhr.responseText, textStatus)
             });
     	}
 

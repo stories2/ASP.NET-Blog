@@ -26,9 +26,9 @@ pageStartPoint: @pageStartPoint
 current show page: @ViewBag.currentShowPage</code></pre>*@
 @if (articleCount > 0)
 {
-    var featuredPost = ViewBag.latestArticleList[0];
+    //var featuredPost = ViewBag.latestArticleList[0];
     <!-- Featured Post -->
-    <article class="post featured" ng-app="featurePost" ng-controller="getFeaturePost">
+    <article class="post featured" ng-app="featurePost" ng-controller="getFeaturePost" ng-init="getCurrentPageArticles(@ViewBag.currentShowPage)">
             <header class="major">
                 <span class="date">{{ postUploadDateTime }}</span>@*@featuredPost.uploadDateTime*@ 
                 <h2>
