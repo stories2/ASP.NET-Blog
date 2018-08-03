@@ -16,3 +16,4 @@ SHOW_ELEMENTS = 1
 ENDPOINT_APPEND_NEW_USER = "/Blog/NewUser"
 
 API_GET_CURRENT_PAGE_LATEST_ARTICLE = "/api/BlogApi/GetCurrentPageArticleInfo/"
+API_GET_SHOW_SELECTED_ARTICLE = "/api/BlogApi/ShowSelectedArticle/"
