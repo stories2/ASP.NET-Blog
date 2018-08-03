@@ -5,18 +5,18 @@
 }
 
 <!-- Post -->
-<section class="post">
+<section id="postDetailView" class="post" ng-app="postManager" ng-controller="getSelectedPostDetail">
     <header class="major">
-        <span class="date">@ViewBag.article.uploadDateTime</span>
+        <span class="date">@*@ViewBag.article.uploadDateTime*@</span>
         <h1>
-            #@ViewBag.article.articleID @ViewBag.article.title
+            #@*@ViewBag.article.articleID @ViewBag.article.title*@
         </h1>
         <p>
-            @ViewBag.article.highlightText
+            @*@ViewBag.article.highlightText*@
         </p>
     </header>
-    <div class="image main"><img src="@ViewBag.article.imgUrl" alt="" /></div>
-    <p>@ViewBag.article.articleContent</p>
+    <div class="image main"><img src="" alt="" /></div>@*@ViewBag.article.imgUrl*@
+    <p>@*@ViewBag.article.articleContent*@</p>
 </section>
 
 <script>

@@ -16,7 +16,8 @@ $(document).ready(function () {
     bootstrapTargetMain = $("#main")
 
     angular.bootstrap(bootstrapTargetMain, [
-        'featurePost', 'normalPost', 'pageManager'
-        ])
+        'featurePost', 'normalPost', 'pageManager',
+        'postManager'
+    ])
 })
 
