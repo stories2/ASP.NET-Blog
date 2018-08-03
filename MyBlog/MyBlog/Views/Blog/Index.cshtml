@@ -50,26 +50,33 @@ current show page: @ViewBag.currentShowPage</code></pre>*@
     {
         <!-- Posts -->
         <section class="posts" ng-app="normalPost" ng-controller="getNormalPosts" ng-init="getCurrentPageArticles(@ViewBag.currentShowPage)">
-            @for(i = 1; i < articleCount; i ++) 
+            @*@for(i = 1; i < articleCount; i ++) 
             {
-                var currentPost = ViewBag.latestArticleList[i];
+                var currentPost = ViewBag.latestArticleList[i];*@
+           
+            <div ng-repeat="post in latestArticleList">
                 <article>
                     <header>
-                        <span class="date">@currentPost.uploadDateTime</span>
+                        <span class="date">{{ post['uploadDateTime'] }}</span>@*@currentPost.uploadDateTime*@
                         <h2>
-                            <a href="/Blog/ShowSelectedArticle?articleID=@currentPost.articleID">
-                                #@currentPost.articleID @currentPost.title
+                            <a href="/Blog/ShowSelectedArticle?articleID={{ post['articleID'] }}">
+                                @*@currentPost.articleID*@
+                                #@*@currentPost.articleID @currentPost.title*@{{ post['articleID'] }} {{ post['title'] }}
                             </a>
                         </h2>
                     </header>
-                    <a href="/Blog/ShowSelectedArticle?articleID=@currentPost.articleID" class="image fit"><img src="@currentPost.imgUrl" alt="" /></a>
-                    <p>@currentPost.highlightText</p>
+                    <a href="/Blog/ShowSelectedArticle?articleID={{ post['articleID'] }}" class="image fit"><img src="{{ post['imgUrl'] }}" alt="" /></a>@*@currentPost.articleID*@ @*@currentPost.imgUrl*@
+                    <p>{{ post['highlightText'] }}</p>@*@currentPost.highlightText*@
                     <ul class="actions special">
-                        <li><a href="/Blog/ShowSelectedArticle?articleID=@currentPost.articleID" class="button">Full Story</a></li>
+                        <li><a href="/Blog/ShowSelectedArticle?articleID={{ post['articleID'] }}" class="button">Full Story</a></li>@*@currentPost.articleID*@
                     </ul>
                 </article>
-            }
-        </section>
+            </div>
+            @*}*@
+            @*<div ng-repeat="post in latestArticleList">
+                {{ post }}
+            </div>*@
+</section>
     }
     <!-- Footer -->
     <footer>

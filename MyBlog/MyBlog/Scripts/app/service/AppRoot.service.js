@@ -46,7 +46,7 @@
     			url: url,
     			cache: false,
     			contentType: 'application/x-www-form-urlencoded',
-    			data: data,
+    			params: data,
     			async: false,
     			crossDomain: true,
     			// headers: {
