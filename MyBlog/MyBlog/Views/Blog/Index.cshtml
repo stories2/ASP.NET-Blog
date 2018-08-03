@@ -79,24 +79,26 @@ current show page: @ViewBag.currentShowPage</code></pre>*@
 </section>
     }
     <!-- Footer -->
-    <footer>
+    <footer ng-app="pageManager" ng-controller="PageManagerController" ng-init="currentShowPage=@ViewBag.currentShowPage; initPageNavigation(@pageNum, @pageStartPoint, @ViewBag.pageNavigationSize)">
         @*@pageNum ~ @(pageStartPoint + ViewBag.pageNavigationSize)*@
         <div class="pagination">
-            @if (ViewBag.currentShowPage > 1)
-            {
-                <a href="/Blog/Index?page=@(ViewBag.currentShowPage - 1)" class="previous">Prev</a>
-            }
-            @for (i = pageStartPoint; i <= (pageNum < pageStartPoint + ViewBag.pageNavigationSize ? pageNum : pageStartPoint + ViewBag.pageNavigationSize); i++)
-            {
-                if (ViewBag.currentShowPage == i)
+            @*@if (ViewBag.currentShowPage > 1)
+            {*@
+                <a ng-if="currentShowPage > 1" ng-attr-href="/Blog/Index?page={{ currentShowPage - 1 }}" class="previous">Prev</a>
+            @*}*@
+            <div ng-repeat="pageNumber in range(@pageStartPoint, maxNaviPage)">
+                @*@for (i = pageStartPoint; i <= (pageNum < pageStartPoint + ViewBag.pageNavigationSize ? pageNum : pageStartPoint + ViewBag.pageNavigationSize); i++)
                 {
-                    <a href="/Blog/Index?page=@i" class="page active">@i</a>
-                }
-                else
-                {
-                    <a href="/Blog/Index?page=@i" class="page">@i</a>
-                }
-            }
+                    if (ViewBag.currentShowPage == i)
+                    {*@
+                        <a ng-class="pageNumber == @ViewBag.currentShowPage ? 'page active' : 'page'" href="/Blog/Index?page={{ pageNumber }}" class="">{{ pageNumber }}</a>
+                    @*}
+                    else
+                    {
+                        <a href="/Blog/Index?page=@i" class="page">@i</a>
+                    }
+                }*@
+            </div>
             @*<a href="#" class="page active">1</a>
                 <a href="#" class="page">2</a>
                 <a href="#" class="page">3</a>
@@ -104,10 +106,10 @@ current show page: @ViewBag.currentShowPage</code></pre>*@
                 <a href="#" class="page">8</a>
                 <a href="#" class="page">9</a>
                 <a href="#" class="page">10</a>*@
-            @if (ViewBag.currentShowPage < pageNum)
-            {
-                <a href="/Blog/Index?page=@(ViewBag.currentShowPage + 1)" class="next">Next</a>
-            }
+            @*@if (ViewBag.currentShowPage < pageNum)
+            {*@
+                <a ng-if="currentShowPage < @pageNum" ng-attr-href="/Blog/Index?page={{ currentShowPage + 1 }}" class="next">Next</a>
+            @*}*@
         </div>
     </footer>
 
