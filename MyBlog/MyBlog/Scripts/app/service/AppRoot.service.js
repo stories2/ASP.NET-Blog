@@ -6,7 +6,7 @@
 
     	var postReqCallback = function (url, data, successCallback, failCallback, token) {
     		$http({
-    			type: "POST",
+    			method: "POST",
     			dataType: 'json',
     			url: url,
     			cache: false,

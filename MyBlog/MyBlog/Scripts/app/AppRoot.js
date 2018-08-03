@@ -17,7 +17,7 @@ $(document).ready(function () {
 
     angular.bootstrap(bootstrapTargetMain, [
         'featurePost', 'normalPost', 'pageManager',
-        'postManager'
+        'postManager', 'createPost'
     ])
 })
 

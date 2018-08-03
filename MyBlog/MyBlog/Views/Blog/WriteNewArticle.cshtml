@@ -20,30 +20,30 @@
     <!-- Form -->
     <h2>Upload new post</h2>
     @* TODO: Post API req -> 하는걸 해보자 *@
-    <form method="post" action="@Url.Action("UploadNewArticle", "Blog")">
+    <form ng-app="createPost" ng-submit="uploadNewPost()" ng-controller="uploadNewPost">@*@Url.Action("UploadNewArticle", "Blog")*@
         @Html.AntiForgeryToken()
         <div class="row gtr-uniform">
             <div class="col-12">
-                @*<input type="text" placeholder="Title" id="title"/>*@
-                @Html.TextBoxFor(articleModel => articleModel.title, new { placeholder = "Title"})
+                <input type="text" placeholder="Title" id="title" name="title" ng-model="title" required/>
+                @*@Html.TextBoxFor(articleModel => articleModel.title, new { placeholder = "Title"})*@
             </div>
 
             <div class="col-12">
-                @*<textarea placeholder="Highlight" rows="3" id="highlightText"></textarea>*@
-                @Html.TextAreaFor(articleModel => articleModel.highlightText, new { placeholder = "Highlight", rows = "3"})
+                <textarea placeholder="Highlight" rows="3" id="highlightText" name="highlightText" ng-model="highlightText" required></textarea>
+                @*@Html.TextAreaFor(articleModel => articleModel.highlightText, new { placeholder = "Highlight", rows = "3"})*@
             </div>
 
             <div class="col-12">
-                @*<input type="text" placeholder="Image URL" id="imgUrl"/>*@
-                @Html.TextBoxFor(articleModel => articleModel.imgUrl, new { placeholder = "Image URL"})
+                <input type="text" placeholder="Image URL" id="imgUrl" name="imgUrl" ng-model="imgUrl" required/>
+                @*@Html.TextBoxFor(articleModel => articleModel.imgUrl, new { placeholder = "Image URL"})*@
             </div>
 
             <div class="col-12">
-                @*<textarea placeholder="Content" rows="6" id="articleContent"></textarea>*@
-                @Html.TextAreaFor(articleModel => articleModel.articleContent, new { placeholder = "Content", rows = "6" })
+                <textarea placeholder="Content" rows="6" id="articleContent" name="articleContent" ng-model="articleContent" required></textarea>
+                @*@Html.TextAreaFor(articleModel => articleModel.articleContent, new { placeholder = "Content", rows = "6" })*@
             </div>
 
-            <input id="clientToken" name="clientToken" value="" type="hidden"/>
+            <input id="clientToken" name="clientToken" type="hidden" ng-init="token=''" ng-model="token" ng-value="" ng-change="tokenGenerated($event)" value="{{ token }}"/>
 
             <div class="col-12">
                 <ul class="actions">

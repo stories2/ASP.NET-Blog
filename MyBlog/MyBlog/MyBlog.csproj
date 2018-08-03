@@ -214,8 +214,11 @@
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\app\AppRoot.js" />
+    <Content Include="Scripts\app\CreatePost.js" />
     <Content Include="Scripts\app\FeaturePost.js" />
     <Content Include="Scripts\app\NormalPost.js" />
+    <Content Include="Scripts\app\PageManager.js" />
+    <Content Include="Scripts\app\PostManager.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <EntityDeploy Include="Models\MyBlogModel.edmx">
