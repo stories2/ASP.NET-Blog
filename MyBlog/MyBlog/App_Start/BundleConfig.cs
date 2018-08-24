@@ -55,6 +55,7 @@ namespace MyBlog
             bundles.Add(new StyleBundle("~/Blog/css").Include(
                 "~/Template/assets/css/main.css",
                 "~/Template/assets/css/noscript.css",
+                "~/Template/assets/css/font-awesome.min.css",
                 "~/Template/custom/css/Profile.css"
                 ));
 
