@@ -154,9 +154,24 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Article.cs">
-      <DependentUpon>MyBlogModel.tt</DependentUpon>
+      <DependentUpon>my-asp-net-blog-db.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ErrorModel.cs" />
+    <Compile Include="Models\my-asp-net-blog-db.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>my-asp-net-blog-db.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\my-asp-net-blog-db.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>my-asp-net-blog-db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\my-asp-net-blog-db.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>my-asp-net-blog-db.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Models\MyBlogModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -174,7 +189,7 @@
     </Compile>
     <Compile Include="Models\NewArticleModel.cs" />
     <Compile Include="Models\UserInfo.cs">
-      <DependentUpon>MyBlogModel.tt</DependentUpon>
+      <DependentUpon>my-asp-net-blog-db.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\UserInfoModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -193,6 +208,16 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Models\my-asp-net-blog-db.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>my-asp-net-blog-db.edmx</DependentUpon>
+      <LastGenOutput>my-asp-net-blog-db.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\my-asp-net-blog-db.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>my-asp-net-blog-db.edmx</DependentUpon>
+      <LastGenOutput>my-asp-net-blog-db.cs</LastGenOutput>
+    </Content>
     <Content Include="Models\MyBlogModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>MyBlogModel.edmx</DependentUpon>
@@ -227,6 +252,13 @@
     </EntityDeploy>
     <Content Include="Models\MyBlogModel.edmx.diagram">
       <DependentUpon>MyBlogModel.edmx</DependentUpon>
+    </Content>
+    <EntityDeploy Include="Models\my-asp-net-blog-db.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>my-asp-net-blog-db.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\my-asp-net-blog-db.edmx.diagram">
+      <DependentUpon>my-asp-net-blog-db.edmx</DependentUpon>
     </Content>
     <None Include="Properties\PublishProfiles\DeployTest.pubxml" />
     <Content Include="Scripts\angular.min.js.map" />
