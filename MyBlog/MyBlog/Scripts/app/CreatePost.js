@@ -1,5 +1,5 @@
 ﻿angular.module("createPost", ['appRoot'])
-    .controller("uploadNewPost", function ($scope, appRootService) {
+    .controller("uploadNewPost", function ($scope, $timeout, appRootService) {
 
         $scope.title = ''
         $scope.highlightText = ''
@@ -45,8 +45,15 @@
             appRootService.PrintLogMessage("createPost", "tokenGenerated", "token val changed: " + $scope.token, LOG_LEVEL_DEBUG)
         }
 
-        $scope.$watch('token', function (newValue, oldValue) {
-            // ...
-            appRootService.PrintLogMessage("createPost", "watchToken", "token val change watcher -> new: " + newValue + " old: " + oldValue, LOG_LEVEL_DEBUG)
-        });
+        //$scope.$watch('token', function (newValue, oldValue) {
+        //    // ...
+        //    appRootService.PrintLogMessage("createPost", "watchToken", "token val change watcher -> new: " + newValue + " old: " + oldValue, LOG_LEVEL_DEBUG)
+        //});
+
+        $timeout(function () {
+            $scope.$watch('token', function (newValue, oldValue) {
+                // ...
+                appRootService.PrintLogMessage("createPost", "watchToken", "token val change watcher -> new: " + newValue + " old: " + oldValue, LOG_LEVEL_DEBUG)
+            });
+        }, 1000, true)
     })
