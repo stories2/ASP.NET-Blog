@@ -10,13 +10,15 @@ namespace MyBlog.Controllers
 {
     public class BlogApiController : ApiController
     {
-        MyBlogEntities myBlogEntities;
+        //MyBlogEntities myBlogEntities;
+        MyAspNetBlogEntities myAspNetBlogEntities;
         MyBlogDBManager myBlogDBManager;
         HttpsManager httpsManager;
         public BlogApiController()
         {
-            myBlogEntities = new MyBlogEntities();
-            myBlogDBManager = new MyBlogDBManager(myBlogEntities);
+            //myBlogEntities = new MyBlogEntities();
+            myAspNetBlogEntities = new MyAspNetBlogEntities();
+            myBlogDBManager = new MyBlogDBManager(myAspNetBlogEntities);
             httpsManager = new HttpsManager();
         }
 

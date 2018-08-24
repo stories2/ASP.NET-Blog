@@ -8,16 +8,22 @@ namespace MyBlog.Controllers
 {
     public class MyBlogDBManager
     {
-        MyBlogEntities myBlogEntities { get; set; }
+        //MyBlogEntities myBlogEntities { get; set; }
+        MyAspNetBlogEntities myAspNetBlogEntities { get; set; }
 
-        public MyBlogDBManager(MyBlogEntities myBlogEntities = null)
+        //public MyBlogDBManager(MyBlogEntities myBlogEntities = null)
+        //{
+        //    this.myBlogEntities = myBlogEntities;
+        //}
+
+        public MyBlogDBManager(MyAspNetBlogEntities myAspNetBlogEntities)
         {
-            this.myBlogEntities = myBlogEntities;
+            this.myAspNetBlogEntities = myAspNetBlogEntities;
         }
 
         public List<Article> GetLatestArticeList(int pageNum = DefineManager.DEFAULT_PAGE_NUM, int limit = DefineManager.LIMIT_OF_SHOW_ARTICLES)
         {
-            List<Article> latestArticleList = myBlogEntities.Article
+            List<Article> latestArticleList = myAspNetBlogEntities.Article
                 .Where(article => article.isDelete == DefineManager.NOT_DELETED_ARTICLE)
                 .OrderByDescending(article => article.articleID)
                 .Skip((pageNum - 1) * limit)
@@ -27,7 +33,7 @@ namespace MyBlog.Controllers
 
         public int GetCountOfArticleList()
         {
-            int articleListCount = myBlogEntities.Article
+            int articleListCount = myAspNetBlogEntities.Article
                 .Where(article => article.isDelete == DefineManager.NOT_DELETED_ARTICLE)
                 .Count();
             return articleListCount;
@@ -38,7 +44,7 @@ namespace MyBlog.Controllers
             Article article = null;
             try
             {
-                article = myBlogEntities.Article
+                article = myAspNetBlogEntities.Article
                     .Where(articleModel => articleModel.isDelete == DefineManager.NOT_DELETED_ARTICLE)
                     .Where(articleModel => articleModel.articleID == articleID).First<Article>();
             }
@@ -56,8 +62,8 @@ namespace MyBlog.Controllers
                 article.isDelete = DefineManager.NOT_DELETED_ARTICLE;
                 article.uploadDateTime = DateTime.Now;
                 //article.writer = DefineManager.DEFAULT_WRITER;
-                myBlogEntities.Article.Add(article);
-                myBlogEntities.SaveChanges();
+                myAspNetBlogEntities.Article.Add(article);
+                myAspNetBlogEntities.SaveChanges();
             }
             catch(Exception except)
             {
@@ -70,7 +76,7 @@ namespace MyBlog.Controllers
             try
             {
                 LogManager.PrintLogMessage("MyBlogDBManager", "AppendNewUser", "try to append new user: " + userInfoModel.uid, DefineManager.LOG_LEVEL_DEBUG);
-                bool userExistStatus = myBlogEntities.UserInfo.Any(userInfoModelFromDB => userInfoModelFromDB.uid == userInfoModel.uid);
+                bool userExistStatus = myAspNetBlogEntities.UserInfo.Any(userInfoModelFromDB => userInfoModelFromDB.uid == userInfoModel.uid);
                 LogManager.PrintLogMessage("MyBlogDBManager", "AppendNewUser", "user exist status: " + userExistStatus, DefineManager.LOG_LEVEL_DEBUG);
                 if(userExistStatus == false)
                 {
@@ -78,8 +84,8 @@ namespace MyBlog.Controllers
                     userInfo.email = userInfoModel.email;
                     userInfo.uid = userInfoModel.uid;
                     userInfo.userDisplayName = userInfoModel.displayName;
-                    myBlogEntities.UserInfo.Add(userInfo);
-                    myBlogEntities.SaveChanges();
+                    myAspNetBlogEntities.UserInfo.Add(userInfo);
+                    myAspNetBlogEntities.SaveChanges();
                     LogManager.PrintLogMessage("MyBlogDBManager", "AppendNewUser", "ok new user appended", DefineManager.LOG_LEVEL_INFO);
                 }
                 return true;
